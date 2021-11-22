@@ -1,0 +1,20 @@
+<div class="field">
+  <div class="field__road road1"></div>
+  <div class="field__road road2"></div>
+  <div class="field__road road3"></div>
+  <div class="field__road road4"></div>
+  <div class="field__road road5"></div>
+
+  <div class="field__def-tow tow1"></div>
+  <div class="field__def-tow tow2"></div>
+  <div class="field__def-tow tow3"></div>
+
+  <div
+    *ngFor="let enemy of enemy"
+    class="field__enemy"
+    [ngStyle]="{
+      'left': enemy.positionX + 'px',
+      'bottom': enemy.positionY + 'px'
+    }"
+  ></div>
+</div>
