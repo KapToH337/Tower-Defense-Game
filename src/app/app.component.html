@@ -1,4 +1,6 @@
 <div class="field">
+  <h1 class="field__wave">Wave: {{wave}}</h1>
+
   <div class="field__road road1"></div>
   <div class="field__road road2"></div>
   <div class="field__road road3"></div>
@@ -9,12 +11,32 @@
   <div class="field__def-tow tow2"></div>
   <div class="field__def-tow tow3"></div>
 
-  <div
-    *ngFor="let enemy of enemy"
-    class="field__enemy"
-    [ngStyle]="{
-      'left': enemy.positionX + 'px',
-      'bottom': enemy.positionY + 'px'
-    }"
-  ></div>
+  <div *ngFor="let enemy of enemy">
+    <div
+      *ngIf="enemy.health > 0"
+      (click)="getDamage(enemy.id)"
+      class="field__enemy"
+      [ngStyle]="{
+        'left': enemy.positionX + 'px',
+        'bottom': enemy.positionY + 'px'
+      }"
+    >
+      {{enemy.health}}
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="loose"
+  class="loose"
+>
+  <h1 class="loose__text">You loose</h1>
+</div>
+
+<div
+  *ngIf="win"
+  class="win"
+  (click)="goToNextWave()"
+>
+  <h1 class="win__text">You win, go to next wave</h1>
 </div>
